@@ -1,0 +1,22 @@
+server:
+  port: ${PORT:2333}
+  address: 0.0.0.0
+
+lavalink:
+  server:
+    password: "meowbotxyz"
+    sources:
+      youtube: false   # xem lưu ý bên dưới
+      soundcloud: true
+      bandcamp: true
+      twitch: true
+      vimeo: true
+      http: true
+      local: false
+    bufferDurationMs: 400
+    playerUpdateInterval: 5
+
+logging:
+  level:
+    root: INFO
+    lavalink: INFO
