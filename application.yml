@@ -6,7 +6,7 @@ lavalink:
   server:
     password: "meowbotxyz"
     sources:
-      youtube: false   # xem lưu ý bên dưới
+      youtube: true   # xem lưu ý bên dưới
       soundcloud: true
       bandcamp: true
       twitch: true
