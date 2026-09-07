@@ -5,8 +5,8 @@ server:
 lavalink:
   plugins:
     # Plugin YouTube được cộng đồng lavalink-devs duy trì, thay cho source cũ đã bị deprecated.
-    # ⚠️ Kiểm tra version mới nhất tại: https://github.com/lavalink-devs/youtube-source/releases
-    # rồi thay số "1.13.3" bên dưới nếu có bản mới hơn.
+    # Version hiện tại (theo trang Releases bạn vừa check): 1.18.2
+    # Nếu về sau có bản mới hơn, xem tại: https://github.com/lavalink-devs/youtube-source/releases
     - dependency: "dev.lavalink.youtube:youtube-plugin:1.18.2"
       repository: "https://maven.lavalink.dev/releases"
 
@@ -34,6 +34,15 @@ plugins:
       - ANDROID_VR
       - WEB
       - WEBEMBEDDED
+    oauth:
+      enabled: true
+      # Sau khi deploy, xem Deploy Logs — plugin sẽ in ra 1 link + mã pairing (dạng
+      # https://www.google.com/device và 1 mã code). Mở link đó trên điện thoại/máy tính,
+      # đăng nhập bằng 1 tài khoản Google (nên dùng acc phụ, không dùng acc chính) rồi nhập mã.
+      # Sau khi xác thực xong, log sẽ in ra "refreshToken": "....". Copy giá trị đó dán vào
+      # dòng dưới để lần deploy sau khỏi phải đăng nhập lại (vì container Railway build lại
+      # từ đầu mỗi lần push, không tự nhớ được).
+      # refreshToken: ""
 
 logging:
   level:
