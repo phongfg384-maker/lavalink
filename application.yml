@@ -3,10 +3,17 @@ server:
   address: 0.0.0.0
 
 lavalink:
+  plugins:
+    # Plugin YouTube được cộng đồng lavalink-devs duy trì, thay cho source cũ đã bị deprecated.
+    # ⚠️ Kiểm tra version mới nhất tại: https://github.com/lavalink-devs/youtube-source/releases
+    # rồi thay số "1.13.3" bên dưới nếu có bản mới hơn.
+    - dependency: "dev.lavalink.youtube:youtube-plugin:1.13.3"
+      repository: "https://maven.lavalink.dev/releases"
+
   server:
     password: "meowbotxyz"
     sources:
-      youtube: true   # xem lưu ý bên dưới
+      youtube: false   # BẮT BUỘC tắt source cũ, vì plugin ở trên sẽ đảm nhiệm thay thế
       soundcloud: true
       bandcamp: true
       twitch: true
@@ -15,6 +22,18 @@ lavalink:
       local: false
     bufferDurationMs: 400
     playerUpdateInterval: 5
+
+plugins:
+  youtube:
+    enabled: true
+    allowSearch: true
+    allowDirectVideoIds: true
+    allowDirectPlaylistIds: true
+    clients:
+      - MUSIC
+      - ANDROID_VR
+      - WEB
+      - WEBEMBEDDED
 
 logging:
   level:
