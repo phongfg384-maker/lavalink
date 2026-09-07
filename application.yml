@@ -6,8 +6,7 @@ lavalink:
   plugins:
     # Plugin YouTube được cộng đồng lavalink-devs duy trì, thay cho source cũ đã bị deprecated.
     # ⚠️ Kiểm tra version mới nhất tại: https://github.com/lavalink-devs/youtube-source/releases
-    # rồi thay số "1.13.3" bên dưới nếu có bản mới hơn.
-    - dependency: "dev.lavalink.youtube:youtube-plugin:1.13.3"
+    - dependency: "dev.lavalink.youtube:youtube-plugin:1.18,2"
       repository: "https://maven.lavalink.dev/releases"
 
   server:
