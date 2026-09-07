@@ -10,12 +10,6 @@ lavalink:
     - dependency: "dev.lavalink.youtube:youtube-plugin:1.18.2"
       repository: "https://maven.lavalink.dev/releases"
 
-    # Plugin LavaSrc: thêm nguồn Deezer thật (dzsearch/dzisrc). Không có ARL (tài khoản Premium)
-    # nên chỉ phát được preview ~30 giây mỗi bài — đủ để dùng làm nguồn hiển thị + phát thử.
-    # Kiểm tra version mới nhất tại: https://github.com/topi314/LavaSrc/releases
-    - dependency: "com.github.topi314.lavasrc:lavasrc-plugin:4.4.0"
-      repository: "https://maven.lavalink.dev/releases"
-
   server:
     password: "meowbotxyz"
     sources:
@@ -44,18 +38,6 @@ plugins:
       enabled: false
       # Token cũ đã hỏng, cứ 5s lại spam lỗi "Invalid status code for oauth2 token fetch: 400"
       # -> tắt hẳn để dừng vòng lặp lỗi này, nghi ngờ nó gây tốn tài nguyên làm bot chập chờn.
-
-  lavasrc:
-    providers:
-      - "dzisrc:%ISRC%"
-      - "dzsearch:%QUERY%"
-    sources:
-      deezer: true
-    deezer:
-      # Để trống masterDecryptionKey / ARL -> LavaSrc tự chuyển sang chế độ chỉ phát preview 30s
-      # (không cần đăng nhập, không có rủi ro dùng cookie tài khoản người khác).
-      formats:
-        - MP3_128
 
 logging:
   level:
