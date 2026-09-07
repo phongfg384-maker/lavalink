@@ -10,6 +10,12 @@ lavalink:
     - dependency: "dev.lavalink.youtube:youtube-plugin:1.18.2"
       repository: "https://maven.lavalink.dev/releases"
 
+    # Plugin LavaSrc: thêm nguồn Deezer thật (dzsearch/dzisrc). Không có ARL (tài khoản Premium)
+    # nên chỉ phát được preview ~30 giây mỗi bài — đủ để dùng làm nguồn hiển thị + phát thử.
+    # Kiểm tra version mới nhất tại: https://github.com/topi314/LavaSrc/releases
+    - dependency: "com.github.topi314.lavasrc:lavasrc-plugin:4.4.0"
+      repository: "https://maven.lavalink.dev/releases"
+
   server:
     password: "meowbotxyz"
     sources:
@@ -35,14 +41,21 @@ plugins:
       - WEB
       - WEBEMBEDDED
     oauth:
-      enabled: true
-      # Sau khi deploy, xem Deploy Logs — plugin sẽ in ra 1 link + mã pairing (dạng
-      # https://www.google.com/device và 1 mã code). Mở link đó trên điện thoại/máy tính,
-      # đăng nhập bằng 1 tài khoản Google (nên dùng acc phụ, không dùng acc chính) rồi nhập mã.
-      # Sau khi xác thực xong, log sẽ in ra "refreshToken": "....". Copy giá trị đó dán vào
-      # dòng dưới để lần deploy sau khỏi phải đăng nhập lại (vì container Railway build lại
-      # từ đầu mỗi lần push, không tự nhớ được).
-      # refreshToken: ""
+      enabled: false
+      # Token cũ đã hỏng, cứ 5s lại spam lỗi "Invalid status code for oauth2 token fetch: 400"
+      # -> tắt hẳn để dừng vòng lặp lỗi này, nghi ngờ nó gây tốn tài nguyên làm bot chập chờn.
+
+  lavasrc:
+    providers:
+      - "dzisrc:%ISRC%"
+      - "dzsearch:%QUERY%"
+    sources:
+      deezer: true
+    deezer:
+      # Để trống masterDecryptionKey / ARL -> LavaSrc tự chuyển sang chế độ chỉ phát preview 30s
+      # (không cần đăng nhập, không có rủi ro dùng cookie tài khoản người khác).
+      formats:
+        - MP3_128
 
 logging:
   level:
