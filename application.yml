@@ -30,10 +30,9 @@ plugins:
     allowDirectVideoIds: true
     allowDirectPlaylistIds: true
     clients:
-      - MUSIC
-      - ANDROID_VR
-      - WEB
-      - WEBEMBEDDED
+      - WEB            # Search + phát bình thường (không OAuth, đủ cho hầu hết video)
+      - ANDROID_MUSIC   # Dự phòng thêm cho search + phát bình thường
+      - TV              # DUY NHẤT client hỗ trợ OAuth thật -> phát được cả video "requires login"
     oauth:
       enabled: true
       # Sau khi deploy, xem Deploy Logs — sẽ in ra link https://www.google.com/device + mã pairing.
