@@ -35,9 +35,12 @@ plugins:
       - WEB
       - WEBEMBEDDED
     oauth:
-      enabled: false
-      # Token cũ đã hỏng, cứ 5s lại spam lỗi "Invalid status code for oauth2 token fetch: 400"
-      # -> tắt hẳn để dừng vòng lặp lỗi này, nghi ngờ nó gây tốn tài nguyên làm bot chập chờn.
+      enabled: true
+      # Sau khi deploy, xem Deploy Logs — sẽ in ra link https://www.google.com/device + mã pairing.
+      # Mở link đó, đăng nhập bằng acc Google PHỤ (không dùng acc chính), nhập mã, xác nhận.
+      # Sau khi xong, log in ra "refreshToken": "...". Copy giá trị đó dán vào dòng dưới rồi
+      # deploy lại 1 lần nữa, để lần sau khỏi phải pairing lại mỗi khi container rebuild.
+      # refreshToken: ""
 
 logging:
   level:
